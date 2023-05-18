@@ -30,7 +30,8 @@ defined('COMPOSER_PATH') || define('COMPOSER_PATH', ROOTPATH . 'vendor/autoload.
 if (isset($_SERVER['HTTP_HOST'])) {
     $explodeFolder = explode('/index.php', $_SERVER['SCRIPT_NAME'])[0];
     $cekPublicFolder = explode('/public', $explodeFolder);
-    $cekPort = ($_SERVER['SERVER_PORT'] != 80) ?  $explodeFolder : ((count($cekPublicFolder) == 1) ? $explodeFolder . '/public'  : $explodeFolder);
+    $cekPort = ($_SERVER['SERVER_PORT'] != 80) ?  $explodeFolder : ((count($cekPublicFolder) == 1) ? $explodeFolder . ''  : $cekPublicFolder[0]);
+    // $cekPort = ($_SERVER['SERVER_PORT'] != 80) ?  $explodeFolder : ((count($cekPublicFolder) == 1) ? $explodeFolder . '/public'  : $explodeFolder);
     $folderProject = $cekPort;
 
     $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || isset($_SERVER['HTTP_X_FORWARDED_PROTO']) ? 'https://' . $_SERVER['HTTP_HOST'] . $folderProject : 'http://' . $_SERVER['HTTP_HOST'] . $folderProject;
